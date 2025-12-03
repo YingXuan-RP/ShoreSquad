@@ -952,6 +952,40 @@ class ShoreSquadApp {
             });
         }
 
+        // Scroll progress indicator
+        window.addEventListener('scroll', () => {
+            const scrollIndicator = document.getElementById('scroll-indicator');
+            if (scrollIndicator) {
+                const scrollTop = window.pageYOffset;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = (scrollTop / docHeight) * 100;
+                scrollIndicator.style.width = scrollPercent + '%';
+            }
+        });
+
+        // Back to top button
+        const backToTopBtn = document.getElementById('back-to-top');
+        if (backToTopBtn) {
+            // Show/hide based on scroll position
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.style.opacity = '1';
+                    backToTopBtn.style.pointerEvents = 'auto';
+                } else {
+                    backToTopBtn.style.opacity = '0';
+                    backToTopBtn.style.pointerEvents = 'none';
+                }
+            });
+
+            // Scroll to top functionality
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
         // Handle errors gracefully
         window.addEventListener('error', (event) => {
             console.error('Global error:', event.error);
