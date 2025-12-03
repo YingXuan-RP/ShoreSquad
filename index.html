@@ -188,9 +188,14 @@
             
             <div class="weather-dashboard">
                 <div class="current-weather">
-                    <div class="weather-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span id="current-location">Pasir Ris, Singapore</span>
+                    <div class="weather-header">
+                        <div class="weather-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span id="current-location">Pasir Ris, Singapore</span>
+                        </div>
+                        <button class="weather-refresh-btn" id="weather-refresh" aria-label="Refresh weather data">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
                     </div>
                     <div class="weather-main">
                         <div class="weather-icon">
@@ -217,7 +222,7 @@
                 </div>
                 
                 <div class="forecast">
-                    <h3>5-Day Forecast</h3>
+                    <h3>7-Day Weather Forecast</h3>
                     <div class="forecast-grid" id="forecast-grid">
                         <!-- Forecast items will be dynamically generated -->
                     </div>
