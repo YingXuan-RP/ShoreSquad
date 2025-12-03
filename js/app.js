@@ -15,8 +15,8 @@ const CONFIG = {
     },
     WEATHER_API_KEY: 'your-weather-api-key', // Replace with actual API key
     MAP_CONFIG: {
-        defaultCenter: { lat: 34.0522, lng: -118.2437 }, // Los Angeles
-        defaultZoom: 10
+        defaultCenter: { lat: 1.381497, lng: 103.955574 }, // Pasir Ris, Singapore
+        defaultZoom: 15
     },
     ANIMATION_DURATION: 300
 };
@@ -254,13 +254,13 @@ class WeatherService {
         try {
             // For demo purposes, return mock data
             return {
-                location: 'Los Angeles, CA',
-                temperature: 72,
+                location: 'Pasir Ris, Singapore',
+                temperature: 32,
                 condition: 'sunny',
                 icon: 'fas fa-sun',
-                wind: '8 mph',
-                humidity: '65%',
-                uvIndex: 6
+                wind: '12 km/h',
+                humidity: '78%',
+                uvIndex: 8
             };
         } catch (error) {
             console.error('Error fetching weather:', error);
@@ -337,41 +337,41 @@ class CleanupManager {
             this.cleanups = [
                 {
                     id: 1,
-                    title: 'Santa Monica Beach Cleanup',
+                    title: 'Pasir Ris Beach Cleanup',
                     date: '2025-12-07',
                     time: '09:00',
                     duration: '3 hours',
-                    location: 'Santa Monica, CA',
+                    location: 'Pasir Ris, Singapore',
                     participants: 23,
-                    description: 'Join us for a morning beach cleanup at Santa Monica! We\'ll provide all supplies.',
+                    description: 'Join us for a morning beach cleanup at Pasir Ris! We\'ll provide all supplies and refreshments.',
                     image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=250&fit=crop',
-                    weather: { icon: 'fas fa-sun', temp: 72 },
+                    weather: { icon: 'fas fa-sun', temp: 32 },
                     category: 'this-week'
                 },
                 {
                     id: 2,
-                    title: 'Venice Beach Environmental Day',
+                    title: 'Sentosa Beach Environmental Day',
                     date: '2025-12-14',
                     time: '08:00',
                     duration: '4 hours',
-                    location: 'Venice, CA',
+                    location: 'Sentosa, Singapore',
                     participants: 45,
-                    description: 'A comprehensive cleanup and environmental awareness event.',
+                    description: 'A comprehensive cleanup and environmental awareness event at Sentosa Island.',
                     image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=250&fit=crop',
-                    weather: { icon: 'fas fa-cloud-sun', temp: 70 },
+                    weather: { icon: 'fas fa-cloud-sun', temp: 30 },
                     category: 'weekend'
                 },
                 {
                     id: 3,
-                    title: 'Malibu Coastal Restoration',
+                    title: 'East Coast Park Coastal Restoration',
                     date: '2025-12-21',
                     time: '07:30',
                     duration: '5 hours',
-                    location: 'Malibu, CA',
+                    location: 'East Coast Park, Singapore',
                     participants: 67,
-                    description: 'Help restore the natural beauty of Malibu\'s coastline.',
+                    description: 'Help restore the natural beauty of East Coast Park\'s coastline and marine ecosystem.',
                     image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=250&fit=crop',
-                    weather: { icon: 'fas fa-sun', temp: 75 },
+                    weather: { icon: 'fas fa-sun', temp: 33 },
                     category: 'weekend'
                 }
             ];
@@ -439,6 +439,10 @@ class CleanupManager {
                         <div class="meta-item">
                             <i class="fas fa-clock"></i>
                             <span>${cleanup.time} (${cleanup.duration})</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>${cleanup.location}</span>
                         </div>
                         <div class="meta-item">
                             <i class="fas fa-users"></i>
@@ -693,6 +697,82 @@ class ImpactVisualizer {
 }
 
 // ==========================================
+// MAP FUNCTIONALITY
+// ==========================================
+
+class MapService {
+    constructor() {
+        this.map = null;
+        this.marker = null;
+        this.cleanupLocation = {
+            lat: 1.381497,
+            lng: 103.955574,
+            name: 'Pasir Ris Beach',
+            description: 'Beach Cleanup Location'
+        };
+    }
+
+    initMap() {
+        try {
+            // Initialize the map
+            this.map = L.map('map-container').setView([this.cleanupLocation.lat, this.cleanupLocation.lng], 15);
+
+            // Add OpenStreetMap tiles
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors',
+                maxZoom: 19
+            }).addTo(this.map);
+
+            // Create custom icon for the cleanup location
+            const cleanupIcon = L.divIcon({
+                className: 'custom-marker',
+                html: '<i class="fas fa-map-marker-alt" style="color: white; font-size: 16px; margin-top: 6px;"></i>',
+                iconSize: [30, 30],
+                iconAnchor: [15, 15]
+            });
+
+            // Add marker for cleanup location
+            this.marker = L.marker([this.cleanupLocation.lat, this.cleanupLocation.lng], {
+                icon: cleanupIcon
+            }).addTo(this.map);
+
+            // Add popup to marker
+            this.marker.bindPopup(`
+                <div style="text-align: center; padding: 8px;">
+                    <strong style="color: #0077BE; font-size: 14px;">${this.cleanupLocation.name}</strong><br>
+                    <span style="color: #666; font-size: 12px;">${this.cleanupLocation.description}</span><br>
+                    <small style="color: #999; font-size: 11px;">Dec 7, 2025 • 9:00 AM</small>
+                </div>
+            `).openPopup();
+
+            // Disable zoom on double click to prevent accidental zooming
+            this.map.doubleClickZoom.disable();
+
+            console.log('Map initialized successfully');
+        } catch (error) {
+            console.error('Error initializing map:', error);
+            this.showMapFallback();
+        }
+    }
+
+    showMapFallback() {
+        const mapContainer = document.getElementById('map-container');
+        if (mapContainer) {
+            mapContainer.innerHTML = `
+                <div style="display: flex; align-items: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #0077BE, #00A8CC); color: white; text-align: center; padding: 2rem;">
+                    <div>
+                        <i class="fas fa-map-marker-alt" style="font-size: 3rem; margin-bottom: 1rem; color: #FF6B6B;"></i>
+                        <h3 style="margin: 0 0 0.5rem 0;">Pasir Ris Beach</h3>
+                        <p style="margin: 0; opacity: 0.9;">Beach Cleanup Location</p>
+                        <small style="opacity: 0.8;">1.381497, 103.955574</small>
+                    </div>
+                </div>
+            `;
+        }
+    }
+}
+
+// ==========================================
 // GEOLOCATION FUNCTIONALITY
 // ==========================================
 
@@ -718,7 +798,7 @@ class LocationService {
                 },
                 (error) => {
                     console.warn('Geolocation error:', error);
-                    // Fallback to default location (Los Angeles)
+                    // Fallback to default location (Pasir Ris)
                     this.currentPosition = CONFIG.MAP_CONFIG.defaultCenter;
                     resolve(this.currentPosition);
                 },
@@ -850,6 +930,7 @@ class ShoreSquadApp {
         this.crewManager = null;
         this.impactVisualizer = null;
         this.locationService = null;
+        this.mapService = null;
         this.accessibilityManager = null;
         this.performanceMonitor = null;
     }
@@ -868,6 +949,7 @@ class ShoreSquadApp {
             this.crewManager = new CrewManager();
             this.impactVisualizer = new ImpactVisualizer();
             this.locationService = new LocationService();
+            this.mapService = new MapService();
             this.accessibilityManager = new AccessibilityManager();
             this.performanceMonitor = new PerformanceMonitor();
 
@@ -884,8 +966,9 @@ class ShoreSquadApp {
                 this.crewManager.loadCrewData()
             ]);
 
-            // Initialize visualizations
+            // Initialize visualizations and map
             this.impactVisualizer.init();
+            this.mapService.initMap();
 
             // Bind global event listeners
             this.bindGlobalEvents();

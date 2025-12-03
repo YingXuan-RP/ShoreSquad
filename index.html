@@ -42,6 +42,11 @@
     
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Leaflet CSS for interactive maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
+          crossorigin=""/>
 </head>
 <body>
     <!-- Navigation -->
@@ -97,10 +102,16 @@
             </div>
             <div class="hero-visual">
                 <div class="hero-map" id="hero-map">
-                    <!-- Interactive map will be rendered here -->
-                    <div class="map-placeholder">
-                        <i class="fas fa-globe"></i>
-                        <p>Interactive Map Loading...</p>
+                    <!-- Interactive Leaflet map showing next cleanup location -->
+                    <div id="map-container" style="width: 100%; height: 100%; border-radius: 16px; overflow: hidden;"></div>
+                    
+                    <!-- Map overlay info -->
+                    <div class="map-info-overlay">
+                        <div class="map-info-content">
+                            <h4><i class="fas fa-map-marker-alt"></i> Next Cleanup</h4>
+                            <p><strong>Pasir Ris Beach</strong></p>
+                            <p>December 7, 2025 • 9:00 AM</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -133,14 +144,14 @@
                 <!-- Cleanup cards will be dynamically generated -->
                 <div class="cleanup-card" data-category="this-week">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=250&fit=crop" alt="Santa Monica Beach">
+                        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=250&fit=crop" alt="Pasir Ris Beach">
                         <div class="weather-badge">
                             <i class="fas fa-sun"></i>
-                            <span>72°F</span>
+                            <span>32°C</span>
                         </div>
                     </div>
                     <div class="card-content">
-                        <h3>Santa Monica Beach Cleanup</h3>
+                        <h3>Pasir Ris Beach Cleanup</h3>
                         <div class="card-meta">
                             <div class="meta-item">
                                 <i class="fas fa-calendar"></i>
@@ -154,8 +165,12 @@
                                 <i class="fas fa-users"></i>
                                 <span>23 going</span>
                             </div>
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Pasir Ris, Singapore</span>
+                            </div>
                         </div>
-                        <p class="card-description">Join us for a morning beach cleanup at Santa Monica! We'll provide all supplies.</p>
+                        <p class="card-description">Join us for a morning beach cleanup at Pasir Ris! We'll provide all supplies and refreshments.</p>
                         <button class="btn btn-primary">Join Cleanup</button>
                     </div>
                 </div>
@@ -175,28 +190,28 @@
                 <div class="current-weather">
                     <div class="weather-location">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span id="current-location">Los Angeles, CA</span>
+                        <span id="current-location">Pasir Ris, Singapore</span>
                     </div>
                     <div class="weather-main">
                         <div class="weather-icon">
                             <i class="fas fa-sun"></i>
                         </div>
                         <div class="weather-temp">
-                            <span id="current-temp">72</span>°F
+                            <span id="current-temp">32</span>°C
                         </div>
                     </div>
                     <div class="weather-details">
                         <div class="detail-item">
                             <span>Wind</span>
-                            <span id="wind-speed">8 mph</span>
+                            <span id="wind-speed">12 km/h</span>
                         </div>
                         <div class="detail-item">
                             <span>Humidity</span>
-                            <span id="humidity">65%</span>
+                            <span id="humidity">78%</span>
                         </div>
                         <div class="detail-item">
                             <span>UV Index</span>
-                            <span id="uv-index">6</span>
+                            <span id="uv-index">8</span>
                         </div>
                     </div>
                 </div>
@@ -365,6 +380,10 @@
     </button>
 
     <!-- Scripts -->
+    <!-- Leaflet JS for interactive maps -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
+            crossorigin=""></script>
     <script src="js/app.js"></script>
 </body>
 </html>
