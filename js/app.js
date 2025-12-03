@@ -272,11 +272,11 @@ class WeatherService {
         try {
             // For demo purposes, return mock data
             return [
-                { day: 'Mon', icon: 'fas fa-sun', high: 75, low: 62 },
-                { day: 'Tue', icon: 'fas fa-cloud-sun', high: 73, low: 60 },
-                { day: 'Wed', icon: 'fas fa-cloud-rain', high: 68, low: 58 },
-                { day: 'Thu', icon: 'fas fa-sun', high: 76, low: 64 },
-                { day: 'Fri', icon: 'fas fa-sun', high: 78, low: 66 }
+                { day: 'Mon', icon: 'fas fa-sun', high: 33, low: 26 },
+                { day: 'Tue', icon: 'fas fa-cloud-sun', high: 31, low: 25 },
+                { day: 'Wed', icon: 'fas fa-cloud-rain', high: 28, low: 24 },
+                { day: 'Thu', icon: 'fas fa-sun', high: 34, low: 27 },
+                { day: 'Fri', icon: 'fas fa-sun', high: 35, low: 28 }
             ];
         } catch (error) {
             console.error('Error fetching forecast:', error);
@@ -426,7 +426,7 @@ class CleanupManager {
                     <img src="${cleanup.image}" alt="${cleanup.title}" loading="lazy">
                     <div class="weather-badge">
                         <i class="${cleanup.weather.icon}"></i>
-                        <span>${cleanup.weather.temp}°F</span>
+                        <span>${cleanup.weather.temp}°C</span>
                     </div>
                 </div>
                 <div class="card-content">
