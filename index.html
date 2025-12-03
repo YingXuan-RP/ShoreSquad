@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rally your crew, track weather, and hit the next beach cleanup with ShoreSquad!">
+    <meta name="keywords" content="beach cleanup, environmental, community, weather, maps">
+    <meta name="author" content="ShoreSquad">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:title" content="ShoreSquad - Rally Your Crew for Beach Cleanups">
+    <meta property="og:description" content="Rally your crew, track weather, and hit the next beach cleanup with our dope map app!">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="ShoreSquad - Rally Your Crew for Beach Cleanups">
+    <meta property="twitter:description" content="Rally your crew, track weather, and hit the next beach cleanup with our dope map app!">
+    
+    <title>ShoreSquad - Rally Your Crew for Beach Cleanups</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-waves"></i>
+                <span>ShoreSquad</span>
+            </div>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#cleanups" class="nav-link">Cleanups</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#weather" class="nav-link">Weather</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#crew" class="nav-link">Your Crew</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#impact" class="nav-link">Impact</a>
+                </li>
+            </ul>
+            
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Rally Your Crew, Clean Our Shores</h1>
+                <p class="hero-subtitle">Track weather, find cleanup events, and make eco-action fun with your squad!</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" id="find-cleanup-btn">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Find Cleanup
+                    </button>
+                    <button class="btn btn-secondary" id="create-event-btn">
+                        <i class="fas fa-plus"></i>
+                        Create Event
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-map" id="hero-map">
+                    <!-- Interactive map will be rendered here -->
+                    <div class="map-placeholder">
+                        <i class="fas fa-globe"></i>
+                        <p>Interactive Map Loading...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wave-divider">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Upcoming Cleanups Section -->
+    <section id="cleanups" class="cleanups">
+        <div class="container">
+            <div class="section-header">
+                <h2>Upcoming Beach Cleanups</h2>
+                <p>Join the movement and make a difference in your community</p>
+            </div>
+            
+            <div class="cleanup-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="this-week">This Week</button>
+                <button class="filter-btn" data-filter="weekend">Weekends</button>
+                <button class="filter-btn" data-filter="nearby">Nearby</button>
+            </div>
+            
+            <div class="cleanup-grid" id="cleanup-grid">
+                <!-- Cleanup cards will be dynamically generated -->
+                <div class="cleanup-card" data-category="this-week">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=250&fit=crop" alt="Santa Monica Beach">
+                        <div class="weather-badge">
+                            <i class="fas fa-sun"></i>
+                            <span>72°F</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Santa Monica Beach Cleanup</h3>
+                        <div class="card-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>Dec 7, 2025</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>9:00 AM - 12:00 PM</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-users"></i>
+                                <span>23 going</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Join us for a morning beach cleanup at Santa Monica! We'll provide all supplies.</p>
+                        <button class="btn btn-primary">Join Cleanup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weather Dashboard -->
+    <section id="weather" class="weather">
+        <div class="container">
+            <div class="section-header">
+                <h2>Weather Conditions</h2>
+                <p>Perfect conditions for your next cleanup adventure</p>
+            </div>
+            
+            <div class="weather-dashboard">
+                <div class="current-weather">
+                    <div class="weather-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span id="current-location">Los Angeles, CA</span>
+                    </div>
+                    <div class="weather-main">
+                        <div class="weather-icon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <div class="weather-temp">
+                            <span id="current-temp">72</span>°F
+                        </div>
+                    </div>
+                    <div class="weather-details">
+                        <div class="detail-item">
+                            <span>Wind</span>
+                            <span id="wind-speed">8 mph</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Humidity</span>
+                            <span id="humidity">65%</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>UV Index</span>
+                            <span id="uv-index">6</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="forecast">
+                    <h3>5-Day Forecast</h3>
+                    <div class="forecast-grid" id="forecast-grid">
+                        <!-- Forecast items will be dynamically generated -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Crew Section -->
+    <section id="crew" class="crew">
+        <div class="container">
+            <div class="section-header">
+                <h2>Your Squad</h2>
+                <p>Connect with eco-warriors in your area</p>
+            </div>
+            
+            <div class="crew-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-number">247</div>
+                    <div class="stat-label">Squad Members</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-trash"></i>
+                    </div>
+                    <div class="stat-number">1,847</div>
+                    <div class="stat-label">lbs Collected</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-number">32</div>
+                    <div class="stat-label">Events Hosted</div>
+                </div>
+            </div>
+            
+            <div class="crew-leaderboard">
+                <h3>Top Contributors This Month</h3>
+                <div class="leaderboard-list">
+                    <!-- Leaderboard items will be dynamically generated -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="impact" class="impact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Collective Impact</h2>
+                <p>Together, we're making waves of change</p>
+            </div>
+            
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <div class="impact-visual">
+                        <canvas id="trash-chart" width="200" height="200"></canvas>
+                    </div>
+                    <h3>Waste Removed</h3>
+                    <p>Types of debris collected this month</p>
+                </div>
+                
+                <div class="impact-card">
+                    <div class="impact-visual">
+                        <div class="progress-circle" data-percent="78">
+                            <span>78%</span>
+                        </div>
+                    </div>
+                    <h3>Beach Coverage</h3>
+                    <p>Percentage of local beaches maintained</p>
+                </div>
+                
+                <div class="impact-card">
+                    <div class="impact-visual">
+                        <div class="marine-life">
+                            <i class="fas fa-fish"></i>
+                            <i class="fas fa-otter"></i>
+                            <i class="fas fa-crow"></i>
+                        </div>
+                    </div>
+                    <h3>Wildlife Protected</h3>
+                    <p>Marine life benefiting from cleaner shores</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-waves"></i>
+                        <span>ShoreSquad</span>
+                    </div>
+                    <p>Rally your crew, track weather, and hit the next beach cleanup with our community!</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Get Involved</h4>
+                    <ul>
+                        <li><a href="#cleanups">Find Events</a></li>
+                        <li><a href="#crew">Join a Squad</a></li>
+                        <li><a href="#">Host Cleanup</a></li>
+                        <li><a href="#">Volunteer</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Cleanup Guide</a></li>
+                        <li><a href="#">Safety Tips</a></li>
+                        <li><a href="#">Environmental Impact</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 ShoreSquad. All rights reserved. Making waves for cleaner shores.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loading-spinner">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

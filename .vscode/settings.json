@@ -1,0 +1,112 @@
+{
+  "name": "ShoreSquad",
+  "workspaceRoot": "${workspaceRoot}",
+  "settings": {
+    "liveServer.settings.port": 5500,
+    "liveServer.settings.root": "/",
+    "liveServer.settings.CustomBrowser": "chrome",
+    "liveServer.settings.AdvanceCustomBrowserCmdLine": "chrome --incognito --remote-debugging-port=9222",
+    "liveServer.settings.NoBrowser": false,
+    "liveServer.settings.ignoreFiles": [
+      ".vscode/**",
+      "**/*.scss",
+      "**/*.sass",
+      "**/*.ts"
+    ],
+    "liveServer.settings.useWebExt": false,
+    "liveServer.settings.wait": 100,
+    "liveServer.settings.donotShowInfoMsg": false,
+    "liveServer.settings.donotVerifyTags": false,
+    "liveServer.settings.mount": [
+      ["/images", "./assets/images"],
+      ["/css", "./css"],
+      ["/js", "./js"]
+    ],
+    "liveServer.settings.file": "index.html",
+    "liveServer.settings.https": {
+      "enable": false,
+      "cert": "",
+      "key": "",
+      "passphrase": ""
+    },
+    "emmet.includeLanguages": {
+      "javascript": "javascriptreact",
+      "vue-html": "html"
+    },
+    "emmet.triggerExpansionOnTab": true,
+    "files.associations": {
+      "*.css": "css",
+      "*.js": "javascript",
+      "*.html": "html"
+    },
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "css.validate": true,
+    "less.validate": true,
+    "scss.validate": true,
+    "javascript.validate.enable": true,
+    "typescript.validate.enable": true,
+    "html.validate.scripts": true,
+    "html.validate.styles": true,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": true,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "editor.wordWrap": "on",
+    "editor.rulers": [80, 100, 120],
+    "workbench.colorCustomizations": {
+      "editorRuler.foreground": "#0077BE20"
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "ritwickdey.liveserver",
+      "bradlc.vscode-tailwindcss",
+      "esbenp.prettier-vscode",
+      "ms-vscode.vscode-typescript-next",
+      "formulahendry.auto-rename-tag",
+      "christian-kohler.path-intellisense",
+      "ms-vscode.vscode-json",
+      "zignd.html-css-class-completion",
+      "pranaygp.vscode-css-peek",
+      "ms-vscode.live-server",
+      "hookyqr.beautify"
+    ]
+  },
+  "tasks": [
+    {
+      "label": "Start Live Server",
+      "type": "shell",
+      "command": "echo 'Starting Live Server... Open http://localhost:5500'",
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Validate HTML",
+      "type": "shell",
+      "command": "echo 'HTML validation would run here'",
+      "group": "test"
+    },
+    {
+      "label": "Lint CSS",
+      "type": "shell", 
+      "command": "echo 'CSS linting would run here'",
+      "group": "test"
+    },
+    {
+      "label": "Lint JavaScript",
+      "type": "shell",
+      "command": "echo 'JavaScript linting would run here'", 
+      "group": "test"
+    }
+  ]
+}
